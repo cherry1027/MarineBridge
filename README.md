@@ -1,17 +1,5 @@
-# MarineBridge — Universal Marine IoT Gateway
-
-MarineBridge is a small, frontend-only thesis demonstrator exploring a Volvo Penta–relevant problem: marine systems combine established vessel protocols with newer IoT transports, leaving applications to handle incompatible device interfaces.
-
-The prototype represents each device through a standardized entity abstraction (`Light`, `TemperatureSensor`, or `DoorSensor`). Applications issue one common command through `POST /api/device/{id}/state`; a protocol adapter translates it into a synthetic J1939, NMEA 2000, Zigbee, or BLE message.
-
-The open-source reuse panel provides a preliminary comparison of MQTT, Home Assistant Core, Node-RED, and a custom adapter layer as potential implementation building blocks.
-
-## Run locally
-
-```bash
-npm run dev
-```
-
-## Limitation
-
-All devices, protocol messages, state changes, and results are simulated in the browser. The prototype has no backend, persistence, real hardware, or live vessel-network integration.
+MarineBridge — Universal Marine IoT Gateway
+MarineBridge is a small research prototype created to explore a problem: modern vessels often combine traditional marine communication protocols with newer IoT technologies. Applications typically need protocol-specific logic for each connected device, increasing integration complexity and making the system harder to extend.
+The prototype introduces a standardized entity model for devices such as Light, TemperatureSensor, and DoorSensor. Applications control these entities through one common API—POST /api/device/{id}/state—without needing to know whether the underlying device uses J1939, NMEA 2000, Zigbee, or BLE.
+A protocol adapter layer translates each universal API request into a simulated protocol-specific command. The interactive thesis demo shows a CAN/J1939 cabin light and a Zigbee deck light being controlled through the same API while visualizing their different translation routes.
+MarineBridge also presents a preliminary open-source reuse evaluation covering MQTT, Home Assistant Core, Node-RED, and a custom adapter layer. This is a frontend-only demonstration using synthetic devices and simulated protocol messages; it does not include a backend, database, real hardware, or live marine network integration.
